@@ -8,14 +8,14 @@ namespace AddressBook
 {
     class Contacts
     {
-        private string FirstName { get; set; }
-        private string LastName { get; set; }
-        private string Email { get; set; }
-        private string PhoneNumber { get; set; }
-        private string Address { get; set; }
-        private string City { get; set; }
-        private string State { get; set; }
-        private string ZipCode { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
         
         public Contacts(string firstname, string lastname, string email,string phonenumber, string address, string city,string state, string zipcode ) 
         

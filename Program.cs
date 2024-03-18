@@ -31,6 +31,12 @@ namespace AddressBook
                         list.Add(contacts);
                         contacts.display();
                         break;
+                    case 2:
+                        if (list.Count > 0)
+                            EditContacts.EditingContacts(list);
+                        else Console.WriteLine("Address book is empty !, please add contacts !");
+                        break;
+
                     case 4:
                         foreach (Contacts contact in list)
                         {
