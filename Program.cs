@@ -42,10 +42,11 @@ namespace AddressBook
                         break;
 
                     case 4:
-                        foreach (Contacts contact in list)
-                        {
-                            contact.display();
-                        }
+                        if (list.Count > 0)
+                            foreach (Contacts contact in list) contact.display();
+                        else Console.WriteLine("Address book is empty !, please add contacts and then display");
+                        
+                      
                         break;
                     case 5:return;
                     default:Console.WriteLine("Invalid input, enter value between 1 to 4");
