@@ -30,5 +30,11 @@ namespace AddressBook
             ZipCode = zipcode;
 
         }
+
+        public void display() 
+        {
+            Console.WriteLine($"{FirstName} {LastName} {Email} {PhoneNumber} {Address} {City} {State} {ZipCode}");
+            
+        }
     }
 }

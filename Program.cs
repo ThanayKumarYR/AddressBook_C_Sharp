@@ -13,13 +13,15 @@ namespace AddressBook
 
             while (true) 
             {
-                Console.WriteLine("Enter 1 -> adding person's contact.");
+                Console.WriteLine("\nEnter 1 -> adding person's contact.");
                 Console.WriteLine("Enter 2 -> edit contact via name.");
                 Console.WriteLine("Enter 3 -> delete contact.");
-                Console.WriteLine("Enter 4 -> exiting the addressbook.");
+                Console.WriteLine("Enter 4 -> display contacts.");
+                Console.WriteLine("Enter 5 -> exiting the addressbook.\n");
 
                 Console.Write("Enter the choice = ");
                 int choice = int.Parse(Console.ReadLine());
+                Console.WriteLine();
                     
                 switch (choice)
                 {
@@ -27,8 +29,14 @@ namespace AddressBook
                         Console.WriteLine("Adding contact details !");
                         Contacts contacts = AddDetails.AddingDetails();
                         list.Add(contacts);
+                        contacts.display();
                         break;
-                    case 4: return;
+                    case 4:
+                        foreach (Contacts contact in list)
+                        {
+                            contact.display();
+                        }
+                        break;
                     default:Console.WriteLine("Invalid input, enter value between 1 to 4");
                         break;
                 }
