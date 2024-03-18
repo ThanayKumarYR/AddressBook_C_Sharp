@@ -27,8 +27,8 @@ namespace AddressBook
                 foreach (Contacts item in list)
                 {
                     if (item.FirstName == firstname && item.LastName == lastname)
-                    { 
-                        while (true) 
+                    {
+                        while (true)
                         {
                             Console.WriteLine("\nEnter 1 -> edit First Name");
                             Console.WriteLine("Enter 2 -> edit Last Name");
@@ -41,7 +41,7 @@ namespace AddressBook
                             Console.WriteLine("Enter 9 -> exit editing\n");
 
                             Console.Write("Enter the choice = ");
-                            int choice = int.Parse(Console.ReadLine()); 
+                            int choice = int.Parse(Console.ReadLine());
 
                             switch (choice)
                             {
@@ -77,14 +77,18 @@ namespace AddressBook
                                     Console.Write("\nEdit the Zip Code = ");
                                     item.ZipCode = Console.ReadLine();
                                     break;
-                                case 9: 
+                                case 9:
                                     return;
-                                default: 
+                                default:
                                     Console.WriteLine("Invalid input !");
                                     break;
                             }
 
                         }
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Entered name is not in the Address Book !");
                     }
                 }
             }

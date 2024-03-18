@@ -34,7 +34,12 @@ namespace AddressBook
                     case 2:
                         if (list.Count > 0)
                             EditContacts.EditingContacts(list);
-                        else Console.WriteLine("Address book is empty !, please add contacts !");
+                        else Console.WriteLine("Address book is empty !, please add contacts and then edit!");
+                        break;
+                    case 3:
+                        if (list.Count > 0)
+                            DeleteContact.DeletingContacts(list);
+                        else Console.WriteLine("Address book is empty !, please add contacts and then delete!");
                         break;
 
                     case 4:
