@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using static AddressBook.CustomException;
 
 
 namespace AddressBook
 {
     class DeleteContact
     {
-        public static void DeletingContacts(ArrayList list)
+        public static void DeletingContacts(List<Contacts> list)
         {
             try
             {
+                Console.Write("If you wanna exit press Y + enter else anyChar + enter = ");
+                char chooseExit = char.Parse(Console.ReadLine());
+                if (chooseExit == 'Y' || chooseExit == 'y') return;
 
                 Console.WriteLine("Deleting Contacts");
                 Console.Write("Enter the First name: ");
@@ -19,8 +24,7 @@ namespace AddressBook
 
                 if (firstname.Length == 0 || lastname.Length == 0)
                 {
-                    Console.WriteLine("Name cannot be null");
-                    return;
+                    throw new StringEmptyException();
                 }
                 else if (firstname.Length > 0 && lastname.Length > 0)
                 {
@@ -39,22 +43,18 @@ namespace AddressBook
                             }
                             else
                             {
-                                Console.WriteLine("Invalid input !");
+                                throw new InvalidInputException();
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Entered name is not in the Address Book !");
+                            throw new ContactNotFoundException();
                         }
                     }
                 }
             
             }
-            catch(Exception ex) 
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            
-            }
+            catch { DeletingContacts(list); }
         }
     }
 }

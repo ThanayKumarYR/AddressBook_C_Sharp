@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RegexProblems">
+      <HintPath>..\RegexProblems\obj\Debug\RegexProblems.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,10 +48,12 @@
   <ItemGroup>
     <Compile Include="AddDetails.cs" />
     <Compile Include="Contacts.cs" />
+    <Compile Include="CustomException.cs" />
     <Compile Include="DeleteContact.cs" />
     <Compile Include="EditContacts.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchContact.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -5,3 +5,10 @@ C:\Users\Thanay\source\repos\AddressBook\obj\Debug\AddressBook.csproj.AssemblyRe
 C:\Users\Thanay\source\repos\AddressBook\obj\Debug\AddressBook.csproj.CoreCompileInputs.cache
 C:\Users\Thanay\source\repos\AddressBook\obj\Debug\AddressBook.exe
 C:\Users\Thanay\source\repos\AddressBook\obj\Debug\AddressBook.pdb
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\bin\Debug\AddressBook.exe.config
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\bin\Debug\AddressBook.exe
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\bin\Debug\AddressBook.pdb
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\obj\Debug\AddressBook.csproj.AssemblyReference.cache
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\obj\Debug\AddressBook.csproj.CoreCompileInputs.cache
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\obj\Debug\AddressBook.exe
+C:\Users\Thanay\source\repos\AddressBook_C_Sharp\obj\Debug\AddressBook.pdb
