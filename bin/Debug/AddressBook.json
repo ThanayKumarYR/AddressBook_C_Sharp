@@ -1,0 +1,22 @@
+[
+  {
+    "FirstName": "Thanay",
+    "LastName": "Kumar",
+    "Email": "thanay@gmail.com",
+    "PhoneNumber": "91 1234567890",
+    "Address": "qwertyuio",
+    "City": "asdfghjkl",
+    "State": "zxcvbnm",
+    "ZipCode": "560056"
+  },
+  {
+    "FirstName": "Sujan",
+    "LastName": "Sujan",
+    "Email": "sujan@gmail.com",
+    "PhoneNumber": "91 9876543210",
+    "Address": "qwertyuio",
+    "City": "asdfghjkl",
+    "State": "zxcvbnm",
+    "ZipCode": "560056"
+  }
+]
