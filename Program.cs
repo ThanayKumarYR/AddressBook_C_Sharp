@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AddressBook
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             try
             {
                 Console.WriteLine("Welcome to Address Book !\n");
                 List<Contacts> list = new List<Contacts>();
+                Jsoned JSONED = new Jsoned();
+                string file = "AddressBook.json";
                 while (true)
                 {
                     Console.WriteLine("\nEnter 1 -> adding person's contact.");
@@ -34,16 +37,26 @@ namespace AddressBook
                             {
                                 Contacts contacts = list[list.Count - 1];
                                 contacts.display();
+                                string jsoned = JSONED.Serializable(list);
+                                File.WriteAllText(file, jsoned);
                             }
                             break;
                         case 2:
                             if (list.Count > 0)
+                            {
                                 EditContacts.EditingContacts(list);
+                                string jsoned = JSONED.Serializable(list);
+                                File.WriteAllText(file, jsoned);
+                            }
                             else Console.WriteLine("Address book is empty !, please add contacts and then edit!");
                             break;
                         case 3:
                             if (list.Count > 0)
+                            {
                                 DeleteContact.DeletingContacts(list);
+                                string jsoned = JSONED.Serializable(list);
+                                File.WriteAllText(file, jsoned);
+                            }
                             else Console.WriteLine("Address book is empty !, please add contacts and then delete!");
                             break;
 

@@ -26,7 +26,7 @@ namespace AddressBook
 
                 Console.Write("Enter the last name = ");
                 string lastname = Console.ReadLine();
-                if (validation.IsName(lastname) == false) throw new InvalidNameException();
+                if (!validation.IsName(lastname)) throw new InvalidNameException();
 
                 if (SearchContact.DoesExist(list, firstname, lastname)) throw new ContactAlreadyExistsException();
 

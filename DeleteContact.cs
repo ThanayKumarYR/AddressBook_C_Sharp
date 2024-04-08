@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using static AddressBook.CustomException;
 
 
@@ -28,28 +29,35 @@ namespace AddressBook
                 }
                 else if (firstname.Length > 0 && lastname.Length > 0)
                 {
-                    foreach (Contacts item in list)
+                    if (list.Any((contacts) => contacts.FirstName == firstname && contacts.LastName == lastname))
                     {
-                        if (item.FirstName == firstname && item.LastName == lastname)
+                        foreach (Contacts item in list)
                         {
-                            Console.WriteLine("Confirm delation !");
-                            Console.Write("Press Y || y for YES = ");
-                            char decision = char.Parse(Console.ReadLine());
-                            if (decision == 'Y' || decision == 'y')
+                            if (item.FirstName == firstname && item.LastName == lastname)
                             {
-                                list.Remove(item);
-                                Console.WriteLine("Successfully deleted !");
-                                return;
+                                Console.WriteLine("Confirm delation !");
+                                Console.Write("Press Y || y for YES = ");
+                                char decision = char.Parse(Console.ReadLine());
+                                if (decision == 'Y' || decision == 'y')
+                                {
+                                    list.Remove(item);
+                                    Console.WriteLine("Successfully deleted !");
+                                    return;
+                                }
+                                else
+                                {
+                                    throw new InvalidInputException();
+                                }
                             }
                             else
                             {
-                                throw new InvalidInputException();
+                                throw new ContactNotFoundException();
                             }
                         }
-                        else
-                        {
-                            throw new ContactNotFoundException();
-                        }
+                    }
+                    else
+                    {
+                        throw new ContactNotFoundException();
                     }
                 }
             
