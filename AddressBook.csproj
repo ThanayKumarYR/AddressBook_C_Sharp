@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchContact.cs" />
     <Compile Include="Jsoned.cs" />
+    <Compile Include="Sqlquery.cs" />
     <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>

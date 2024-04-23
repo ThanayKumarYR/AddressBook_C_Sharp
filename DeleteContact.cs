@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using static AddressBook.CustomException;
 
@@ -9,7 +10,7 @@ namespace AddressBook
 {
     class DeleteContact
     {
-        public static void DeletingContacts(List<Contacts> list)
+        public static void DeletingContacts(List<Contacts> list,SqlConnection connection)
         {
             try
             {
@@ -41,6 +42,7 @@ namespace AddressBook
                                 if (decision == 'Y' || decision == 'y')
                                 {
                                     list.Remove(item);
+                                    Sqlquery.Delete(connection,item.FirstName,item.LastName);
                                     Console.WriteLine("Successfully deleted !");
                                     return;
                                 }
@@ -62,7 +64,7 @@ namespace AddressBook
                 }
             
             }
-            catch { DeletingContacts(list); }
+            catch { DeletingContacts(list,connection); }
         }
     }
 }

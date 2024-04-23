@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,7 @@ namespace AddressBook
     class EditContacts
     {
 
-        public static void EditingContacts(List<Contacts> list)
+        public static void EditingContacts(List<Contacts> list,SqlConnection connection)
         {
             try
             {
@@ -65,6 +67,7 @@ namespace AddressBook
                                             if (!validation.IsName(fname)) throw new InvalidNameException();
                                             if (SearchContact.DoesExist(list, fname, oldLname)) throw new ContactAlreadyExistsException();
                                             item.FirstName = fname;
+                                            Sqlquery.Update(connection, "firstName", fname,oldFname, oldLname);
                                             break;
                                         case 2:
                                             Console.Write("\nEdit the Last name = ");
@@ -72,42 +75,51 @@ namespace AddressBook
                                             if (validation.IsName(lastname) == false) throw new InvalidNameException();
                                             if (SearchContact.DoesExist(list, oldFname, lname)) throw new ContactAlreadyExistsException();
                                             item.LastName = lname;
+                                            Sqlquery.Update(connection, "lastName", lname, oldFname, oldLname);
                                             break;
                                         case 3:
                                             Console.Write("\nEdit the Email = ");
                                             string editEmail = Console.ReadLine();
                                             if (!validation.IsEmail(editEmail)) throw new InvalidEmailException();
                                             item.Email = editEmail;
+                                            Sqlquery.Update(connection, "email", editEmail, oldFname, oldLname);
                                             break;
                                         case 4:
                                             Console.Write("\nEdit the Phone Number = ");
                                             string editNumber = Console.ReadLine();
                                             if (!validation.IsNumber(editNumber)) throw new InvalidNumberException();
                                             item.PhoneNumber = editNumber;
+                                            Sqlquery.Update(connection, "phonenumber", editNumber, oldFname, oldLname);
                                             break;
                                         case 5:
                                             Console.Write("\nEdit the Address = ");
                                             string editAddress = Console.ReadLine();
                                             if (string.IsNullOrEmpty(editAddress)) throw new StringEmptyException();
                                             item.Address = editAddress;
+                                            Sqlquery.Update(connection, "address", editAddress, oldFname, oldLname);
                                             break;
                                         case 6:
                                             Console.Write("\nEdit the City = ");
                                             string editCity = Console.ReadLine();
                                             if (string.IsNullOrEmpty(editCity)) throw new StringEmptyException();
+
                                             item.City = editCity;
+                                            
+                                            Sqlquery.Update(connection, "City", editCity, oldFname, oldLname);
                                             break;
                                         case 7:
                                             Console.Write("\nEdit the State = ");
                                             string editState = Console.ReadLine();
                                             if (string.IsNullOrEmpty(editState)) throw new StringEmptyException();
                                             item.State = editState;
+                                            Sqlquery.Update(connection, "State", editState, oldFname, oldLname);
                                             break;
                                         case 8:
                                             Console.Write("\nEdit the Zip Code = ");
                                             string editZipCode = Console.ReadLine();
                                             if (!validation.IsZipCode(editZipCode)) throw new InvalidZipCodeException();
                                             item.ZipCode = editZipCode;
+                                            Sqlquery.Update(connection, "zipcode", editZipCode, oldFname, oldLname);
                                             break;
                                         case 9:
                                             return;
@@ -128,7 +140,7 @@ namespace AddressBook
                     
                 }
             }
-            catch { EditingContacts(list); }
+            catch { EditingContacts(list,connection); }
         }
     }
 }

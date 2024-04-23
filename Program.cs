@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 
 namespace AddressBook
 {
     class Program
     {
+         static string ConnectionString = "server=CAPEDBOLDY\\SQLEXPRESS; Initial Catalog = AddressBookDB; Integrated Security = SSPI";
         static void Main()
         {
             try
@@ -15,6 +17,9 @@ namespace AddressBook
                 List<Contacts> list = new List<Contacts>();
                 Jsoned JSONED = new Jsoned();
                 string file = "AddressBook.json";
+                SqlConnection connection = new SqlConnection(ConnectionString);
+                Sqlquery.Create(connection);
+                Sqlquery.InitailizeList(list, connection);
                 while (true)
                 {
                     Console.WriteLine("\nEnter 1 -> adding person's contact.");
@@ -32,7 +37,7 @@ namespace AddressBook
                         case 1:
                             int count = list.Count;
                             Console.WriteLine("Adding contact details !");
-                            AddDetails.AddingDetails(list);
+                            AddDetails.AddingDetails(list,connection);
                             if (count != list.Count)
                             {
                                 Contacts contacts = list[list.Count - 1];
@@ -44,7 +49,7 @@ namespace AddressBook
                         case 2:
                             if (list.Count > 0)
                             {
-                                EditContacts.EditingContacts(list);
+                                EditContacts.EditingContacts(list,connection);
                                 string jsoned = JSONED.Serializable(list);
                                 File.WriteAllText(file, jsoned);
                             }
@@ -53,7 +58,7 @@ namespace AddressBook
                         case 3:
                             if (list.Count > 0)
                             {
-                                DeleteContact.DeletingContacts(list);
+                                DeleteContact.DeletingContacts(list,connection);
                                 string jsoned = JSONED.Serializable(list);
                                 File.WriteAllText(file, jsoned);
                             }
@@ -62,7 +67,10 @@ namespace AddressBook
 
                         case 4:
                             if (list.Count > 0)
+                            {
                                 foreach (Contacts contact in list) contact.display();
+                                Sqlquery.Display(connection);
+                            }
                             else Console.WriteLine("Address book is empty !, please add contacts and then display");
 
 
@@ -78,10 +86,6 @@ namespace AddressBook
             }
             catch(FormatException ex)
             {
-                Console.WriteLine(ex.Message);
-            }
-            catch(Exception ex)
-            { 
                 Console.WriteLine(ex.Message);
             }
         }

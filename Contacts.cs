@@ -8,6 +8,7 @@ namespace AddressBook
 {
     class Contacts
     {
+        public int Id { get; set; } 
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -17,9 +18,10 @@ namespace AddressBook
         public string State { get; set; }
         public string ZipCode { get; set; }
         
-        public Contacts(string firstname, string lastname, string email,string phonenumber, string address, string city,string state, string zipcode ) 
+        public Contacts(int contactId,string firstname, string lastname, string email,string phonenumber, string address, string city,string state, string zipcode ) 
         
         {
+            Id = contactId;
             FirstName = firstname;  
             LastName = lastname;    
             Email = email;

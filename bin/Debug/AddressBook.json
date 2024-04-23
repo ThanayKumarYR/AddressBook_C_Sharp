@@ -1,20 +1,11 @@
 [
   {
-    "FirstName": "Thanay",
-    "LastName": "Kumar",
+    "Id": 1,
+    "FirstName": "Sujan",
+    "LastName": "Thanay",
     "Email": "thanay@gmail.com",
     "PhoneNumber": "91 1234567890",
-    "Address": "qwertyuio",
-    "City": "asdfghjkl",
-    "State": "zxcvbnm",
-    "ZipCode": "560056"
-  },
-  {
-    "FirstName": "Sujan",
-    "LastName": "Sujan",
-    "Email": "sujan@gmail.com",
-    "PhoneNumber": "91 9876543210",
-    "Address": "qwertyuio",
+    "Address": "qwertyuiop",
     "City": "asdfghjkl",
     "State": "zxcvbnm",
     "ZipCode": "560056"

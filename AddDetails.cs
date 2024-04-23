@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace AddressBook
 {
     class AddDetails
     {
-        public static void AddingDetails(List<Contacts> list)
+        public static void AddingDetails(List<Contacts> list, SqlConnection connection)
         {
             try
             {
@@ -53,11 +54,17 @@ namespace AddressBook
 
                 if(string.IsNullOrEmpty(address)|| string.IsNullOrEmpty(city)||string.IsNullOrEmpty(state)) throw new StringEmptyException();
 
-                Contacts contacts = new Contacts(firstname, lastname, email, phonenumber, address, city, state, zipcode);
+                Contacts contacts = new Contacts(list.Count+1,firstname, lastname, email, phonenumber, address, city, state, zipcode);
 
                 list.Add(contacts);
+
+                Sqlquery.Insert(connection,contacts);
+                
             }
-            catch{ AddingDetails(list); }
+            catch(Exception ex){
+                Console.WriteLine(ex.Message);
+                AddingDetails(list, connection);
+            }
         }
     }
 }
